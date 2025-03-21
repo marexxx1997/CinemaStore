@@ -1,0 +1,70 @@
+﻿<link rel="stylesheet" href="/css/movie.css"/>
+@model IEnumerable<Ticket>
+@using CinemaStore.Data.Enums;
+@{
+    ViewData["Title"] = "List of Movies";
+    var genres = ViewData["Genres"] as List<SelectListItem>;
+}
+
+<div class="container mt-4 filter-container mb-4">
+    <div class="row justify-content-center filter-row">
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="genreFilter" class="form-label text-secondary">Odaberite žanr</label>
+                <select id="genreFilter" class="form-select custom-select">
+                    <option value="">Svi žanrovi</option>
+                    @if (ViewData["Genres"] != null)
+                    {
+                        @foreach (var genre in ViewData["Genres"] as List<SelectListItem>)
+                        {
+                            <option value="@genre.Value">@genre.Text</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label for="dateFilter" class="form-label text-secondary">Odaberite datum</label>
+@*                <input type="date" id="dateFilter" class="form-control custom-input" placeholder="Odaberite datum">
+*@            
+<input type="text" id="dateFilter" class="form-control custom-input" placeholder="Odaberite datum" 
+           onfocus="this.type='date'" onblur="if(this.value==''){this.type='text'}" />
+</div>
+        </div>
+    </div>
+</div>
+
+<div id="moviesContainer" class="fade-container">
+    @await Html.PartialAsync("_MoviesList", Model)
+</div>
+
+ @if(User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+@await Html.PartialAsync("_CreateItem", "Movies")
+@await Html.PartialAsync("_AddShowTimeDate", "Movies")
+@await Html.PartialAsync("_ContactUs", "Movies")
+ }
+
+<script>
+    function updateMovies() {
+        var selectedGenre = document.getElementById("genreFilter").value;
+        var selectedDate = document.getElementById("dateFilter").value;
+        var url = "/Movies/FilterByGenre?genreId=" + selectedGenre;
+        if (selectedDate) {
+            url = "/Movies/FilterByDate?selectedDate=" + selectedDate;
+        }
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                var container = document.getElementById("moviesContainer");
+                container.innerHTML = data;
+                container.classList.remove("fade-in");
+                void container.offsetWidth;
+                container.classList.add("fade-in");
+            })
+            .catch(error => console.error("Error fetching movies:", error));
+    }
+
+    document.getElementById("genreFilter").addEventListener("change", updateMovies);
+    document.getElementById("dateFilter").addEventListener("change", updateMovies);
+</script>

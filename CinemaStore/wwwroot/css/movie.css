@@ -1,0 +1,223 @@
+﻿/*body {
+}*/
+/*.edit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 193, 7, 0.8);
+color: white;
+    padding: 8px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+    .edit-icon:hover {
+        background: rgba(255, 193, 7, 1);
+color: white;
+    }*/
+
+/*.form-label {
+    font-weight: bold;
+    color: #f39c12;
+}
+
+.filter-container {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.custom-select, .custom-input {
+    background-color: #444;
+    border: 1px solid #f1c40f;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+}
+
+    .custom-select:focus, .custom-input:focus {
+        border-color: #f39c12;
+        box-shadow: 0 0 5px rgba(243, 156, 18, 0.8);
+    }*/
+
+.movie-card {
+    background-color: #1e1e1e;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+    /* Hover efekt na kartici */
+    .movie-card:hover {
+        transform: translateY(-5px);
+    }
+
+/* Fade efekt kada se učitava novi sadržaj */
+.fade-container.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Ključni frejm za fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Stilizacija filtera */
+.filter-container {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.filter-row .form-label {
+    font-weight: 600;
+    color: #f1c40f; /* lagana nijansa žute za akcenat, ali možeš zameniti sa svetlijom nijansom ili drugom bojom */
+}
+
+.custom-select, .custom-input {
+    background-color: #121212;
+    color: #e0e0e0;
+    border: 1px solid #f1c40f;
+}
+
+    /* Opcioni hover za input polja */
+    .custom-select:focus, .custom-input:focus {
+        border-color: #f39c12;
+        box-shadow: none;
+    }
+
+/* Naslovi */
+.text-custom-title {
+    color: #f1c40f;
+    font-weight: 700;
+}
+
+/* Dodatni stilovi za kartice iz _MoviesList (ako ih koristiš) */
+/* Primer: */
+/*.movie-card img {
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+    .movie-card img:hover {
+        opacity: 0.9;
+    }*/
+
+.btn-warning {
+    background-color: #f39c12;
+    border: none;
+    border-radius: 25px;
+    color: #fff;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-warning:hover {
+        background-color: #f1c40f;
+    }
+
+@media (max-width: 768px) {
+    .custom-select, .custom-input {
+        width: 100%;
+    }
+}
+
+
+@media (min-width:768px) and (max-width:1200px) {
+    .btn-buy {
+        margin-top: 6px;
+        float: none !important;
+    }
+
+    .card-footer {
+        text-align: center;
+    }
+}
+
+@media (min-width:1201px) and (max-width: 1320px) {
+    .card-text a {
+        font-size: small;
+    }
+
+    .btn {
+        margin-top: 0px;
+    }
+}
+
+/* Fade efekt za čitav kontejner */
+.fade-container {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+/* Ključni frejm za fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Stilovi za kartice filmova */
+.movie-card {
+    background-color: #1e1e1e;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+    .movie-card:hover {
+        transform: translateY(-5px);
+    }
+
+/* Stilizacija slike unutar kartice */
+.custom-img {
+    object-fit: fill;
+    height: 200px;
+    width: -webkit-fill-available;
+}
+
+/* Stil za edit ikonicu */
+.edit-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #f1c40f; /* Akcentna boja */
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+    .edit-icon:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+/*.custom-input::placeholder {
+    color: white !important;
+    opacity: 1;*/ /* Osigurava da placeholder ne bude prozirniji */
+/*}*/
+
+#dateFilter::placeholder {
+    color: white !important;
+}

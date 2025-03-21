@@ -1,0 +1,38 @@
+﻿<link rel="stylesheet" href="/css/identity.css" />
+@inject UserManager<ApplicationUser> UserManager;
+
+@if (!User.Identity.IsAuthenticated)
+{
+    @*<a class="btn btn-outline-light my-2 my-md-0 me-1 btn-rounded" asp-controller="Account" asp-action="Login">
+        <i class="bi bi-box-arrow-in-right"></i> Prijavi se
+    </a>*@
+    <a class="btn btn-outline-light my-2 my-md-0 me-1 btn-rounded" asp-controller="Account" asp-action="Login">
+        <i class="bi bi-box-arrow-in-right"></i> Prijavi se
+    </a>
+}
+else
+{
+    <div class="dropdown">
+        <button class="btn btn-outline-light dropdown-toggle btn-rounded" type="button" id="profile-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-badge"></i> <span class="item-label">@UserManager.GetUserName(User)</span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profile-btn">
+            <li>
+                <a class="dropdown-item">
+                    <i class="bi bi-person-gear"></i> Nevena Koprivica
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <span style="padding:5px;"></span>
+    <form asp-controller="Account" asp-action="Logout">
+        @*<button class="btn btn-outline-danger my-2 my-md-0 btn-rounded">
+            <i class="bi bi-box-arrow-in-right"></i> <span class="item-label">Odjavite se</span>
+        </button>*@
+        <button class="btn btn-outline-danger my-2 my-md-0 btn-rounded">
+            <i class="bi bi-box-arrow-in-right"></i> <span class="item-label">Odjavite se</span>
+        </button>
+    </form>
+}
+

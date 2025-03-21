@@ -1,0 +1,99 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+body {
+    background-color: #121212;
+    color: #f1c40f;
+    margin-bottom: 60px;
+}
+
+.navbar {
+    background-color: #000;
+    border-bottom: 3px solid #f1c40f;
+}
+
+.navbar-brand img {
+    height: 80px;
+}
+
+.nav-link {
+    color: #f1c40f !important;
+    font-weight: bold;
+}
+
+    .nav-link:hover {
+        color: #fff !important;
+    }
+
+.footer {
+    background-color: #000;
+    color: #f1c40f;
+    padding: 15px 0;
+    line-height: 10px!important;
+}
+
+.btn-rounded {
+    border-radius: 16px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    padding-right: 25px;
+    margin-left: auto;
+}
+
+.search-container {
+    display: flex;
+    border: 2px solid #f1c40f;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.search-input {
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: black;
+    color: #f1c40f;
+    outline: none;
+    width: 200px;
+}
+
+    .search-input::placeholder {
+        color: #f1c40f;
+        opacity: 0.7;
+    }
+
+.search-button {
+    background-color: #f1c40f;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .search-button:hover {
+        background-color: #e6b800;
+    }
+
+    .search-button i {
+        font-size: 1.2rem;
+    }

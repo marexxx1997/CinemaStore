@@ -1,0 +1,40 @@
+services:
+  webapp:
+    image: mcr.microsoft.com/dotnet/aspnet:6.0
+    container_name: aspnetcore_webapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+      - "5001:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnectionString=Data Source=mssql_server; Initial Catalog=Developer; User Id=SA; Password=Admin1234!; Encrypt=False;
+      - Stripe__SecretKey=sk_test_51Qtz6DJnzF98kKQtLesfVg6Js0uucd7Ro8NgGMVNLEY0lbowB1Na7QLhm9OdQJPPUIvum71o2NxeiLzHP18f22zz00eW95c9TA
+    networks:
+      - bridge_network
+    depends_on:
+      - mssql
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql_server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Admin1234!
+      - MSSQL_PID=Developer
+    ports:
+      - "1422:1433"  # SQL Server default port
+    networks:
+      - bridge_network
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+networks:
+  bridge_network:
+    driver: bridge
+
+volumes:
+  mssql_data:
+  webapp_data:

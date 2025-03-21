@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Payment Successful";
+}
+
+<link rel="stylesheet" href="/css/checkout-success.css" />
+
+<div class="container mt-5">
+    <div class="card bg-dark text-white shadow-lg border-success fade-in" style="border-radius: 15px;">
+        <div class="card-body">
+            <h2 class="card-title text-center">Plaćanje Uspješno</h2>
+            <p class="card-text text-center">
+                Hvala Vam za kupovinu! Vaša transakcija je uspješno realizovana.
+            </p>
+            <p class="card-text text-center">
+                Karta vam je dostavljena na email u QR formatu:
+            </p>
+            <div class="d-flex justify-content-center">
+                <img src="~/qr-ticket.png" alt="QR Code" class="qr-code">
+            </div>
+        </div>
+    </div>
+</div>

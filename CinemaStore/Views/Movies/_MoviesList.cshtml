@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Ticket>
+
+<div class="row mb-5 fade-container">
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-xs-6 mb-3">
+                <div class="card movie-card" style="max-width: 240px;">
+                    <div class="position-relative">
+                        <a asp-action="Details" asp-route-id="@item.Id">
+                            <img src="@item.TicketPictureUrl" alt="@item.Name" class="img-fluid custom-img">
+                        </a>
+                         @if(User.Identity.IsAuthenticated && User.IsInRole("Admin")) {
+                        <a class="edit-icon" asp-action="Edit" asp-route-id="@item.Id">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                         }
+                    </div>
+                    <div class="card-footer text-center">
+                        <h5 class="card-title text-uppercase">@item.Name</h5>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

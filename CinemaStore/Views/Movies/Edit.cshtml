@@ -1,0 +1,133 @@
+﻿@model NewTicketVM
+@using CinemaStore.Data.Enums;
+@using CinemaStore.Data;
+
+@{
+    ViewData["Title"] = "Izmjenite podatke o datom filmu/predstavi";
+}
+
+<link rel="stylesheet" href="/css/create_form.css" />
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="text-custom-title">Izmjenite podatke o datom filmu/predstavi</h2>
+
+        <div class="card custom-card shadow-lg">
+            <div class="card-body p-4">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row">
+                        <!-- Lijeva kolona -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="TicketType" class="form-label fw-bold"></label>
+                                <select asp-for="TicketType" class="form-select">
+                                    <option value="1">Film</option>
+                                    <option value="2">Predstava</option>
+                                </select>
+                                <span asp-validation-for="TicketType" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Name" class="form-label fw-bold"></label>
+                                <input asp-for="Name" class="form-control" placeholder="Unesite naziv filma/predstave" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Description" class="form-label fw-bold"></label>
+                                <textarea asp-for="Description" class="form-control" placeholder="Kratak opis..." style="height: 84px;"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Producer" class="form-label fw-bold"></label>
+                                <input asp-for="Producer" class="form-control" placeholder="Unesite ime producenta" />
+                                <span asp-validation-for="Producer" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Actors" class="form-label fw-bold"></label>
+                                <input asp-for="Actors" class="form-control" placeholder="Unesite glavne glumce" />
+                                <span asp-validation-for="Actors" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Desna kolona -->
+                        <div class="col-md-6">
+                              <div class="mb-3">
+                                <label asp-for="SelectedGenres" class="form-label fw-bold">Žanrovi</label>
+                                <select asp-for="SelectedGenres" class="form-select" multiple>
+                                    @foreach (var genre in Model.Genres)
+                                    {
+                                        <option value="@genre.Value" selected="@Model.SelectedGenres.Contains(int.Parse(genre.Value))">
+                                            @genre.Text
+                                        </option>
+                                    }
+                                </select>
+                                <span asp-validation-for="SelectedGenres" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="SelectedFormats" class="form-label fw-bold">Formati</label>
+                                <select asp-for="SelectedFormats" class="form-select" multiple>
+                                    @foreach (var format in Model.Formats)
+                                    {
+                                        <option value="@format.Value" selected="@Model.SelectedFormats.Contains(int.Parse(format.Value))">
+                                            @format.Text
+                                        </option>
+                                    }
+                                </select>
+                                <span asp-validation-for="SelectedFormats" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Duration" class="form-label fw-bold"></label>
+                                <input asp-for="Duration" class="form-control" placeholder="Trajanje (u minutama)" />
+                                <span asp-validation-for="Duration" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Price" class="form-label fw-bold"></label>
+                                <input asp-for="Price" type="number" class="form-control" placeholder="Cijena" />
+                                <span asp-validation-for="Price" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Polje za URL slike -->
+                    <div class="mb-3">
+                        <label asp-for="TicketPictureUrl" class="form-label fw-bold"></label>
+                        <input asp-for="TicketPictureUrl" class="form-control" placeholder="URL slike" id="TicketPictureUrl" />
+                        <span asp-validation-for="TicketPictureUrl" class="text-danger"></span>
+                    </div>
+
+                    <!-- Pregled slike -->
+                    <div class="text-center mb-4">
+                        <img width="15%" id="TicketPictureUrlPreview" class="img-preview border border-warning" />
+                    </div>
+
+                    <!-- Dugmad -->
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-secondary" asp-action="Index">
+                            <i class="bi bi-arrow-left"></i> Prikaži sve
+                        </a>
+                        <button type="submit" class="btn btn-warning fw-bold">
+                            <i class="bi bi-check-lg"></i> Izmjeni
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $("#TicketPictureUrl").on("input", function () {
+            var output = document.getElementById("TicketPictureUrlPreview");
+            output.src = $(this).val();
+        });
+    </script>
+}

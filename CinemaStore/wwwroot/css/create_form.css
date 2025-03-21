@@ -1,0 +1,51 @@
+﻿/* custom-form.css */
+
+/* Forma i kartica */
+.card.custom-card {
+    background-color: #121212;
+    border: none;
+    border-radius: 15px;
+}
+
+/* Naslov */
+.text-custom-title {
+    color: #f1c40f;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Pregled slike */
+.img-preview {
+    border-radius: 10px;
+}
+
+/* Stilovi za formu */
+.form-label {
+    color: #f1c40f;
+}
+
+/* Stilovi za input i select polja */
+.form-control, .form-select {
+    background-color: #1e1e1e;
+    border: 1px solid #f1c40f;
+    color: #fff7cc;
+}
+
+/* Placeholder */
+::placeholder {
+    color: #f1c40f;
+    opacity: 0.7;
+}
+
+/* Fokus stanje */
+.form-control:focus, .form-select:focus {
+    background-color: #1e1e1e;
+    border-color: #f39c12;
+    color: #fffbe0;
+    box-shadow: none;
+}
+
+/* Dugmad - zaobljenje */
+.btn {
+    border-radius: 6px; /* Možeš prilagoditi po želji */
+}

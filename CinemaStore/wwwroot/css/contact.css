@@ -1,0 +1,40 @@
+﻿.contact-info {
+    position: fixed;
+    left: 10px;
+    bottom: 40px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+    .contact-info span {
+        display: flex;
+        align-items: center;
+        color: #f1c40f;
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+
+    .contact-info i {
+        margin-right: 8px;
+        color: #f1c40f;
+    }
+
+.contact-button {
+    display: inline-block;
+    font-weight: 500;
+    background-color: black;
+    color: #f1c40f;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+    .contact-button:hover {
+        background-color: #f1c40f;
+        color: black;
+    }
+
+.contact-button:hover i {
+    color: black;
+}
