@@ -21,9 +21,19 @@ namespace CinemaStore.Data
                 {
                     context.Genres.AddRange(new List<Genre>
                     {
-                        new Genre { Name = "Fantasy" },
-                        new Genre { Name = "Action" },
-                        new Genre { Name = "Drama" }
+                        new Genre { Name = "Fantazija" },
+                        new Genre { Name = "Akcija" },
+                        new Genre { Name = "Drama" },
+                        new Genre { Name = "Triler" },
+                        new Genre { Name = "Misterija" },
+                        new Genre { Name = "Dokumentarni" },
+                        new Genre { Name = "Komedija" },
+                        new Genre { Name = "Romantika" },
+                        new Genre { Name = "Animirani" },
+                        new Genre { Name = "Porodični" },
+                        new Genre { Name = "Balet" },
+                        new Genre { Name = "Opera" },
+                        new Genre { Name = "Predstava" }  
                     });
                     context.SaveChanges();
                 }
@@ -34,7 +44,8 @@ namespace CinemaStore.Data
                     {
                         new Format { Name = "2D" },
                         new Format { Name = "3D" },
-                        new Format { Name = "4D" }
+                        new Format { Name = "4D" },
+                        new Format { Name = "Uživo" }
                     });
                     context.SaveChanges();
                 }
